@@ -31,9 +31,12 @@
 
                         @endif
                     </td>
-                    <td><a href="{{url('players/' . $player->id)}}"><button type="button" class="btn btn-light">Show</button></a>
+                    <td>
+                        <a href="{{url('players/' . $player->id)}}"><button type="button" class="btn btn-light">Show</button></a>
                         <a href="{{url('players/' . $player->id . '/edit')}}" type="button"class="btn btn-primary">Edit</a>
+                        <a>
                         <form action="{{url('players/' . $player->id)}}" method="POST">@csrf    @method('DELETE')<button type="submit" class="btn btn-danger">Delete</button></form>
+                        </a>
                     </td>
 
                 </tr>
@@ -41,7 +44,15 @@
             </tbody>
         </table>
         <td>
-            <form action="{{url('players/truncate')}}" method="GET"><button type="submit" class="btn btn-danger">Delete Table</button></form>
+
+            <form class="btn btn-dark" action="{{url('players/import')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-success">Import List</button>
+                <a class="btn btn-light" href="{{url('players/export')}}"> Export List</a>
+                <form action="{{url('players/truncate')}}" method="GET"><button type="submit" class="btn btn-danger">Delete Table</button></form>
+            </form>
         </td>
         <br>
         <td>

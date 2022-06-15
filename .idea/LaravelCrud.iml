@@ -105,6 +105,15 @@
       <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/myclabs/php-enum" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/maennchen/zipstream-php" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/markbaker/complex" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/markbaker/matrix" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/maatwebsite/excel" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/phpoffice/phpspreadsheet" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/LaravelCrud/vendor/psr/http-factory" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

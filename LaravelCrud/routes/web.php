@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/players/export', 'PlayerController@export');
+Route::post('/players/import', 'PlayerController@import');
 
 Route::get('/players','PlayerController@index');
 Route::get('/players/create','PlayerController@create');

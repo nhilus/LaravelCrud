@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PlayersExport;
+use App\Imports\PlayersImport;
 use App\Player;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class PlayerController extends Controller
@@ -125,6 +128,18 @@ class PlayerController extends Controller
     {
         Player::truncate();
         return redirect('players')->with('status','Players deleted successfully!');;
+    }
+
+    public function export()
+    {
+        return Excel::download(new PlayersExport, 'players.xlsx');
+    }
+
+    public function import()
+    {
+        Excel::import(new PlayersImport(), request()->file('file'));
+
+        return redirect('/players')->with('success', 'All good!');
     }
 
     //public function search(Request $request)

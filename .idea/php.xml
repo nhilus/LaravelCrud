@@ -101,6 +101,15 @@
       <path value="$PROJECT_DIR$/LaravelCrud/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/LaravelCrud/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/LaravelCrud/vendor/composer" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/LaravelCrud/vendor/psr/http-factory" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
