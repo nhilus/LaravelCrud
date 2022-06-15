@@ -1,4 +1,4 @@
-<form method="POST" action="{{ url('players/' . $player->id) }}">
+<form method="POST" action="{{ url('players/' . $player->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="form-group col-xl-5 col-lg-6 col-md-8 col-sm-12 mx-auto text-left form p-4">
@@ -47,6 +47,28 @@
         </div>
 
         <div class="form-group">
+            <label for="name">Image</label>
+            @if($player->image)
+                <img src="{{asset("storage/{$player->image}")}}">
+            @endif
+            <input
+                type="file"
+                id="image"
+                name="image"
+                autocomplete="image"
+                class="form-control
+                @error('image') is-invalid @enderror"
+                value="{{ old('image') }}"
+                required>
+
+            @error('image')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
             <label for="description">Description</label>
             <textarea
                 class="form-control"
@@ -66,7 +88,6 @@
             <br>
             <label for="retired">Retired:</label>
             <br>
-
             <div class="form-check form-check-inline">
                 <input class="form-check-input " type="radio" name="retired" id="retired1" value="1" @if($player->retired == 1){
                        checked="checked"

@@ -6,6 +6,7 @@ use App\Exports\PlayersExport;
 use App\Imports\PlayersImport;
 use App\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -55,7 +56,8 @@ class PlayerController extends Controller
             'name'          => 'required',
             'address'       => 'required',
             'description'   => 'required',
-            'retired'       => 'required|boolean'
+            'retired'       => 'required|boolean',
+            'image'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //Player::create($request->all());
@@ -66,7 +68,18 @@ class PlayerController extends Controller
         $player->retired        = $request->retired;
         $player->save();
 
+        if ($request->file('image')) {
+            // Get Image File
+            $imagePath = $request->file('image');
+            // Define Image Name
+            $imageName = $player->id . '_' . time() . '_' . $imagePath->getClientOriginalName();
+            // Save Image on Storage
+            $path = $request->file('image')->storeAs('images/players/' . $player->id, $imageName, 'public');
+            //Save Image Path
+            $player->image = $path;
+        }
 
+        $player->save();
 
         return redirect('players')->with('status','Player created successfully!');
     }
@@ -107,6 +120,20 @@ class PlayerController extends Controller
         $player->address     = $request->address;
         $player->description = $request->description;
         $player->retired     = $request->retired;
+
+        if ($request->file('image')) {
+
+            if($player->image) Storage::delete('public/'.$player->image);
+            // Get Image File
+            $imagePath = $request->file('image');
+            // Define Image Name
+            $imageName = $player->id . '_' . time() . '_' . $imagePath->getClientOriginalName();
+            // Save Image on Storage
+            $path = $request->file('image')->storeAs('images/players/' . $player->id, $imageName, 'public');
+            //Save Image Path
+            $player->image = $path;
+        }
+
         $player->save();
 
         return redirect('players')->with('status','Player edited successfully!');
@@ -120,6 +147,7 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
+        Storage::deleteDirectory('public/images/players/' . $player->id);
         $player->delete();
         return redirect('players')->with('status','Player deleted successfully!');;
     }

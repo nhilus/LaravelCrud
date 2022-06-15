@@ -1,4 +1,4 @@
-<form method="POST" action="{{ url('players') }}">
+<form method="POST" action="{{ url('players') }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-xl-5 col-lg-6 col-md-8 col-sm-12 mx-auto text-left form p-4">
         <h1>Add Player</h1>
@@ -77,6 +77,25 @@
                 </label>
             </div>
         </div>
+        <div class="form-group">
+            <label for="name">Image</label>
+            <input
+                type="file"
+                id="image"
+                name="image"
+                autocomplete="image"
+                class="form-control
+                @error('image') is-invalid @enderror"
+                value="{{ old('image') }}"
+                required>
+
+            @error('image')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
         <br>
         <button type="submit" class="mt-2 mb-5 btn btn-primary">Submit</button>
 
