@@ -33,28 +33,24 @@
                         @endif
                     </td>
                     <td><img class="img-responsive" src="{{ asset('storage/'.$player->image) }}" alt="" title=""></td>
-                    <td>
-
-                        <a href="{{url('players/' . $player->id)}}"><button type="button" class="btn btn-light">Show</button></a>
-                        <a href="{{url('players/' . $player->id . '/edit')}}" type="button"class="btn btn-primary">Edit</a>
-                        <a>
-                        <form action="{{url('players/' . $player->id)}}" method="POST">@csrf    @method('DELETE')<button type="submit" class="btn btn-danger">Delete</button></form>
-                        </a>
+                    <td class="d-flex">
+                        <a href="{{url('players/' . $player->id)}}" class=" mr-2"><button type="button" class="btn btn-outline-light btn-dark">Show</button></a>
+                        <a href="{{url('players/' . $player->id . '/edit')}}" type="button"class="btn btn-outline-light btn-dark mr-2">Edit</a>
+                        <form action="{{url('players/' . $player->id)}}" method="POST" class=" mr-2">@csrf    @method('DELETE')<button type="submit" class="btn btn-outline-light btn-dark">Delete</button></form>
                     </td>
 
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <td>
-            <div></div>
+        <td class="d-flex">
+            <div>
             <form class="btn btn-dark" action="{{url('players/import')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="file" class="form-control">
-                <br>
                 <button type="submit" class="btn btn-success">Import List</button>
             </form>
-            <a class="btn btn-light" href="{{url('players/export')}}"> Export List</a>
+            <div class="btn btn-dark" href="{{url('players/export')}}"> Export List</div>
             <form action="{{url('players/truncate')}}" method="GET"><button type="submit" class="btn btn-danger">Delete Table</button></form>
             </div>
         </td>
